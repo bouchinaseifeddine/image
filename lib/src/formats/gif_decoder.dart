@@ -236,7 +236,10 @@ class GifDecoder extends Decoder {
               final lc = lastBytes[i];
               final nc = remapColors[lc];
               if (nc != -1) {
-                nextBytes[i] = nc!;
+                if (nc == null) {
+                  continue;
+                }
+                nextBytes[i] = nc;
               }
             }
           }
